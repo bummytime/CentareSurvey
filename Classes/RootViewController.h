@@ -11,6 +11,14 @@
 @class QuestionTwoViewController;
 @class QuestionThreeViewController;
 
+/*
+ SubstitutableDetailViewController defines the protocol that detail view controllers must adopt. The protocol specifies methods to hide and show the bar button item controlling the popover.
+ 
+ */
+@protocol QuestionViewController
+	- (int)questionNumber;
+@end
+
 @interface RootViewController : UIViewController {
 	UINavigationBar *navigationBar;
 	QuestionOneViewController *questionOneViewController;

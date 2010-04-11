@@ -7,9 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "RootViewController.h"
 
-
-@interface QuestionTwoViewController : UIViewController {
+@interface QuestionTwoViewController : UIViewController <QuestionViewController> {
 
 }
 
