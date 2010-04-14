@@ -28,6 +28,8 @@
 	self.questionOneViewController = q1Controller;
 	[self.view insertSubview:q1Controller.view atIndex:0];
 	[q1Controller release];
+	
+	[self CreateOnlyNextButton];
     [super viewDidLoad];
 }
 
@@ -46,20 +48,73 @@
     return YES;
 }
 
+
+#pragma mark -
+#pragma mark Navigation button bunk
+
+- (void) CreateOnlyNextButton {
+	//Remove the current UINavigationItem
+	[navigationBar popNavigationItemAnimated:NO];
+	UIBarButtonItem *nextButton = [[UIBarButtonItem alloc] initWithTitle:@"Next Question"
+																   style:UIBarButtonItemStyleBordered
+																  target:self 
+																  action:@selector(nextQuestion:)];
+	UINavigationItem *item = [[UINavigationItem alloc] initWithTitle:@"Centare Group Survey"];
+	item.rightBarButtonItem = nextButton;
+	item.hidesBackButton = YES;
+	[navigationBar pushNavigationItem:item animated:NO];
+	[nextButton release];	
+	[item release];
+}
+
+- (void) CreateOnlyPreviousButton {
+	//Remove the current UINavigationItem
+	[navigationBar popNavigationItemAnimated:NO];
+	UIBarButtonItem *previousButton = [[UIBarButtonItem alloc] initWithTitle:@"Previous Question"
+																   style:UIBarButtonItemStyleBordered
+																  target:self 
+																  action:@selector(previousQuestion:)];
+	UINavigationItem *item = [[UINavigationItem alloc] initWithTitle:@"Centare Group Survey"];
+	item.leftBarButtonItem = previousButton;
+	item.hidesBackButton = YES;
+	[navigationBar pushNavigationItem:item animated:NO];
+	[previousButton release];	
+	[item release];
+}
+
+- (void) CreatePreviousNextButton {
+	//Remove the current UINavigationItem
+	[navigationBar popNavigationItemAnimated:NO];
+	UIBarButtonItem *previousButton = [[UIBarButtonItem alloc] initWithTitle:@"Previous Question"
+																	   style:UIBarButtonItemStyleBordered
+																	  target:self 
+																	  action:@selector(previousQuestion:)];
+	UIBarButtonItem *nextButton = [[UIBarButtonItem alloc] initWithTitle:@"Next Question"
+																   style:UIBarButtonItemStyleBordered
+																  target:self 
+																  action:@selector(nextQuestion:)];
+	UINavigationItem *item = [[UINavigationItem alloc] initWithTitle:@"Centare Group Survey"];
+	item.leftBarButtonItem = previousButton;
+	item.rightBarButtonItem = nextButton;
+	item.hidesBackButton = YES;
+	[navigationBar pushNavigationItem:item animated:NO];
+	[previousButton release];
+	[nextButton release];
+	[item release];
+}
+
 #pragma mark -
 #pragma mark Actions
 
 - (IBAction)previousQuestion:(id)sender {
-	if (self.questionOneViewController.view.superview != nil) { //On #1, go to #3
-		if (self.questionThreeViewController == nil) {
-			QuestionThreeViewController *q3ViewController = [[QuestionThreeViewController alloc] 
-														   initWithNibName:@"QuestionThreeView" bundle:nil];
-			self.questionThreeViewController = q3ViewController;
-			[q3ViewController release];
-		}
-		[questionOneViewController.view removeFromSuperview];
-		[self.view insertSubview:questionThreeViewController.view atIndex:0];
-		
+	//Declare animation block
+	[UIView beginAnimations:@"View Flip" context:nil]; 
+	[UIView setAnimationDuration:.50]; 
+	[UIView setAnimationCurve:UIViewAnimationCurveEaseInOut];
+	[UIView setAnimationTransition:UIViewAnimationTransitionFlipFromLeft forView:self.view cache:YES];
+	
+	if (self.questionOneViewController.view.superview != nil) { 
+		//On #1, can't circle back to #3
 	} else if (self.questionTwoViewController.view.superview != nil) { //On #2, go to #1
 		if (self.questionOneViewController == nil) {
 			QuestionOneViewController *q1ViewController = [[QuestionOneViewController alloc] 
@@ -67,8 +122,13 @@
 			self.questionOneViewController = q1ViewController;
 			[q1ViewController release];
 		}
+		[self CreateOnlyNextButton];
+		[questionTwoViewController viewWillAppear:YES]; 
+		[questionOneViewController viewWillDisappear:YES];
 		[questionTwoViewController.view removeFromSuperview];
 		[self.view insertSubview:questionOneViewController.view atIndex:0];
+		[questionOneViewController viewDidDisappear:YES]; 
+		[questionTwoViewController viewDidAppear:YES];		
 		
 	} else { //On #3, go to #2
 		if (self.questionTwoViewController == nil) {
@@ -77,12 +137,25 @@
 			self.questionTwoViewController = q2ViewController;
 			[q2ViewController release];
 		}
+		[self CreatePreviousNextButton];
+		[questionThreeViewController viewWillAppear:YES]; 
+		[questionTwoViewController viewWillDisappear:YES];
 		[questionThreeViewController.view removeFromSuperview];
-		[self.view insertSubview:questionTwoViewController.view atIndex:0];		
+		[self.view insertSubview:questionTwoViewController.view atIndex:0];
+		[questionTwoViewController viewDidDisappear:YES]; 
+		[questionThreeViewController viewDidAppear:YES];		
 	}
+	
+	[UIView commitAnimations];
 }
 
 - (IBAction)nextQuestion:(id)sender {
+	//Declare animation block
+	[UIView beginAnimations:@"View Flip" context:nil]; 
+	[UIView setAnimationDuration:.50]; 
+	[UIView setAnimationCurve:UIViewAnimationCurveEaseInOut];
+	[UIView setAnimationTransition:UIViewAnimationTransitionFlipFromRight forView:self.view cache:YES];
+	
 	if (self.questionOneViewController.view.superview != nil) { //On #1, go to #2 
 		if (self.questionTwoViewController == nil) {
 			QuestionTwoViewController *q2ViewController = [[QuestionTwoViewController alloc] 
@@ -90,8 +163,13 @@
 			self.questionTwoViewController = q2ViewController;
 			[q2ViewController release];
 		}
-		[questionOneViewController.view removeFromSuperview];
-		[self.view insertSubview:questionTwoViewController.view atIndex:0];
+		[self CreatePreviousNextButton];
+		[questionOneViewController viewWillAppear:YES]; 
+		[questionTwoViewController viewWillDisappear:YES];
+		[questionOneViewController.view removeFromSuperview]; 
+		[self.view insertSubview:questionTwoViewController.view atIndex:0]; 
+		[questionTwoViewController viewDidDisappear:YES]; 
+		[questionOneViewController viewDidAppear:YES];				
 		
 	} else if (self.questionTwoViewController.view.superview != nil) { //On #2, go to #3 
 		if (self.questionThreeViewController == nil) {
@@ -100,20 +178,19 @@
 			self.questionThreeViewController = q3ViewController;
 			[q3ViewController release];
 		}
+		[self CreateOnlyPreviousButton];
+		[questionTwoViewController viewWillAppear:YES]; 
+		[questionThreeViewController viewWillDisappear:YES];
 		[questionTwoViewController.view removeFromSuperview];
 		[self.view insertSubview:questionThreeViewController.view atIndex:0];
+		[questionThreeViewController viewDidDisappear:YES]; 
+		[questionTwoViewController viewDidAppear:YES];				
 		
-	} else { //On #3, go back to #1
-		if (self.questionOneViewController == nil) {
-			QuestionOneViewController *q1ViewController = [[QuestionOneViewController alloc] 
-														   initWithNibName:@"QuestionOneView" bundle:nil];
-			self.questionOneViewController = q1ViewController;
-			[q1ViewController release];
-		}
-		[questionThreeViewController.view removeFromSuperview];
-		[self.view insertSubview:questionOneViewController.view atIndex:0];
-		
+	} else {
+		//On #3, can't circle back to #1
 	}
+	
+	[UIView commitAnimations];
 }
 
 #pragma mark -

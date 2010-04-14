@@ -24,6 +24,7 @@
 	QuestionOneViewController *questionOneViewController;
 	QuestionTwoViewController *questionTwoViewController;
 	QuestionThreeViewController *questionThreeViewController;
+	
 }
 
 @property (retain, nonatomic) IBOutlet UINavigationBar *navigationBar;
@@ -33,5 +34,10 @@
 
 - (IBAction)previousQuestion:(id)sender;
 - (IBAction)nextQuestion:(id)sender;
+
+
+- (void) CreateOnlyPreviousButton;
+- (void) CreateOnlyNextButton;
+- (void) CreatePreviousNextButton;
 
 @end
