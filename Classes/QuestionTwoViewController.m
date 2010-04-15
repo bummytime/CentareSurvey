@@ -21,6 +21,11 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+	if (UIDeviceOrientationIsPortrait(self.interfaceOrientation)) {
+		[self supportPortrait];
+	} else {
+		[self supportLandscape];
+	}
 }
 
 - (void)viewDidUnload {
@@ -36,6 +41,18 @@
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {
     // Overriden to allow any orientation.
     return YES;
+}
+
+- (void)supportPortrait {
+	NSLog(@"current view before %@",self.view); 
+	self.view.frame = CGRectMake(0, 0, 768, 960); 
+	NSLog(@"current view after %@",self.view); 
+}
+
+- (void)supportLandscape {
+	NSLog(@"current view before %@",self.view); 
+	self.view.frame = CGRectMake(0, 0, 1024, 715); 
+	NSLog(@"current view after %@",self.view);  
 }
 
 #pragma mark -

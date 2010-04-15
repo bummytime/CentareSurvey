@@ -44,7 +44,7 @@
 					<bool key="EncodedWithXMLCoder">YES</bool>
 					<object class="IBUIImageView" id="701963866">
 						<reference key="NSNextResponder" ref="191373211"/>
-						<int key="NSvFlags">263</int>
+						<int key="NSvFlags">290</int>
 						<string key="NSFrame">{{0, 131}, {768, 246}}</string>
 						<reference key="NSSuperview" ref="191373211"/>
 						<bool key="IBUIUserInteractionEnabled">NO</bool>
@@ -314,7 +314,7 @@
 					<bool key="EncodedWithXMLCoder">YES</bool>
 					<string>QuestionOneViewController</string>
 					<string>UIResponder</string>
-					<string>{{341, 57}, {783, 949}}</string>
+					<string>{{408, 107}, {746, 719}}</string>
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>

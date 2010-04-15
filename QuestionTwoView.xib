@@ -44,7 +44,7 @@
 					<bool key="EncodedWithXMLCoder">YES</bool>
 					<object class="IBUIImageView" id="701963866">
 						<reference key="NSNextResponder" ref="191373211"/>
-						<int key="NSvFlags">295</int>
+						<int key="NSvFlags">294</int>
 						<string key="NSFrame">{{0, 131}, {768, 246}}</string>
 						<reference key="NSSuperview" ref="191373211"/>
 						<bool key="IBUIUserInteractionEnabled">NO</bool>
@@ -69,7 +69,7 @@
 					</object>
 					<object class="IBUIImageView" id="364665587">
 						<reference key="NSNextResponder" ref="191373211"/>
-						<int key="NSvFlags">265</int>
+						<int key="NSvFlags">297</int>
 						<string key="NSFrame">{{651, 665}, {117, 193}}</string>
 						<reference key="NSSuperview" ref="191373211"/>
 						<int key="IBUIContentMode">7</int>
@@ -107,7 +107,7 @@
 					<object class="IBUILabel" id="885897452">
 						<reference key="NSNextResponder" ref="191373211"/>
 						<int key="NSvFlags">290</int>
-						<string key="NSFrame">{{163, 201}, {532, 148}}</string>
+						<string key="NSFrame">{{163, 201}, {482, 148}}</string>
 						<reference key="NSSuperview" ref="191373211"/>
 						<bool key="IBUIOpaque">NO</bool>
 						<bool key="IBUIClipsSubviews">YES</bool>
@@ -129,7 +129,7 @@
 					<object class="IBUISlider" id="632430756">
 						<reference key="NSNextResponder" ref="191373211"/>
 						<int key="NSvFlags">293</int>
-						<string key="NSFrame">{{142, 440}, {466, 23}}</string>
+						<string key="NSFrame">{{140, 440}, {466, 23}}</string>
 						<reference key="NSSuperview" ref="191373211"/>
 						<bool key="IBUIOpaque">NO</bool>
 						<string key="targetRuntimeIdentifier">IBIPadFramework</string>
@@ -159,7 +159,7 @@
 					<object class="IBUILabel" id="437994620">
 						<reference key="NSNextResponder" ref="191373211"/>
 						<int key="NSvFlags">293</int>
-						<string key="NSFrame">{{478, 470}, {102, 21}}</string>
+						<string key="NSFrame">{{476, 470}, {102, 21}}</string>
 						<reference key="NSSuperview" ref="191373211"/>
 						<bool key="IBUIOpaque">NO</bool>
 						<bool key="IBUIClipsSubviews">YES</bool>
@@ -192,6 +192,7 @@
 					<int key="NSColorSpace">1</int>
 					<bytes key="NSRGB">MSAxIDEAA</bytes>
 				</object>
+				<int key="IBUIContentMode">3</int>
 				<object class="IBUISimulatedStatusBarMetrics" key="IBUISimulatedStatusBarMetrics">
 					<int key="IBUIStatusBarStyle">2</int>
 				</object>
@@ -228,14 +229,14 @@
 						<object class="NSMutableArray" key="children">
 							<bool key="EncodedWithXMLCoder">YES</bool>
 							<reference ref="530013696"/>
-							<reference ref="701963866"/>
 							<reference ref="592912491"/>
-							<reference ref="885897452"/>
 							<reference ref="632430756"/>
 							<reference ref="50355722"/>
 							<reference ref="437994620"/>
 							<reference ref="364665587"/>
 							<reference ref="391562178"/>
+							<reference ref="701963866"/>
+							<reference ref="885897452"/>
 						</object>
 						<reference key="parent" ref="0"/>
 					</object>
@@ -319,7 +320,7 @@
 					<bool key="EncodedWithXMLCoder">YES</bool>
 					<string>QuestionTwoViewController</string>
 					<string>UIResponder</string>
-					<string>{{360, 57}, {783, 949}}</string>
+					<string>{{329, 117}, {783, 860}}</string>
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>

@@ -39,12 +39,12 @@
 			</object>
 			<object class="IBUIView" id="191373211">
 				<reference key="NSNextResponder"/>
-				<int key="NSvFlags">311</int>
+				<int key="NSvFlags">274</int>
 				<object class="NSMutableArray" key="NSSubviews">
 					<bool key="EncodedWithXMLCoder">YES</bool>
 					<object class="IBUIImageView" id="701963866">
 						<reference key="NSNextResponder" ref="191373211"/>
-						<int key="NSvFlags">290</int>
+						<int key="NSvFlags">294</int>
 						<string key="NSFrame">{{0, 131}, {768, 246}}</string>
 						<reference key="NSSuperview" ref="191373211"/>
 						<bool key="IBUIUserInteractionEnabled">NO</bool>
@@ -93,7 +93,7 @@
 					</object>
 					<object class="IBUILabel" id="885897452">
 						<reference key="NSNextResponder" ref="191373211"/>
-						<int key="NSvFlags">295</int>
+						<int key="NSvFlags">290</int>
 						<string key="NSFrame">{{162, 236}, {456, 65}}</string>
 						<reference key="NSSuperview" ref="191373211"/>
 						<bool key="IBUIOpaque">NO</bool>
@@ -116,7 +116,7 @@
 					<object class="IBUITextField" id="932511964">
 						<reference key="NSNextResponder" ref="191373211"/>
 						<int key="NSvFlags">293</int>
-						<string key="NSFrame">{{110, 394}, {548, 223}}</string>
+						<string key="NSFrame">{{130, 391}, {507, 157}}</string>
 						<reference key="NSSuperview" ref="191373211"/>
 						<bool key="IBUIOpaque">NO</bool>
 						<bool key="IBUIClipsSubviews">YES</bool>
@@ -139,8 +139,8 @@
 					</object>
 					<object class="IBUIImageView" id="863028357">
 						<reference key="NSNextResponder" ref="191373211"/>
-						<int key="NSvFlags">297</int>
-						<string key="NSFrame">{{715, 720}, {53, 193}}</string>
+						<int key="NSvFlags">265</int>
+						<string key="NSFrame">{{715, 685}, {53, 193}}</string>
 						<reference key="NSSuperview" ref="191373211"/>
 						<int key="IBUIContentMode">7</int>
 						<bool key="IBUIUserInteractionEnabled">NO</bool>
@@ -206,12 +206,12 @@
 						<object class="NSMutableArray" key="children">
 							<bool key="EncodedWithXMLCoder">YES</bool>
 							<reference ref="530013696"/>
-							<reference ref="701963866"/>
 							<reference ref="592912491"/>
-							<reference ref="885897452"/>
+							<reference ref="801703053"/>
 							<reference ref="863028357"/>
 							<reference ref="932511964"/>
-							<reference ref="801703053"/>
+							<reference ref="701963866"/>
+							<reference ref="885897452"/>
 						</object>
 						<reference key="parent" ref="0"/>
 					</object>
@@ -283,7 +283,7 @@
 					<bool key="EncodedWithXMLCoder">YES</bool>
 					<string>QuestionThreeViewController</string>
 					<string>UIResponder</string>
-					<string>{{341, 57}, {783, 949}}</string>
+					<string>{{96, 57}, {783, 949}}</string>
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
