@@ -7,6 +7,7 @@
 //
 
 #import "RootViewController.h"
+#import "WelcomeViewController.h"
 #import "QuestionOneViewController.h"
 #import "QuestionTwoViewController.h"
 #import "QuestionThreeViewController.h"
@@ -14,6 +15,7 @@
 
 @implementation RootViewController
 @synthesize navigationBar;
+@synthesize welcomeViewController;
 @synthesize questionOneViewController;
 @synthesize questionTwoViewController;
 @synthesize questionThreeViewController;
@@ -23,13 +25,17 @@
 #pragma mark View management
 
 - (void)viewDidLoad {
-	QuestionOneViewController *q1Controller = [[QuestionOneViewController alloc]
-											   initWithNibName:@"QuestionOneView" bundle:nil];
-	self.questionOneViewController = q1Controller;
-	[self.view insertSubview:q1Controller.view atIndex:0];
-	[q1Controller release];
-	[self createOnlyNextButton];
-    [super viewDidLoad];
+	WelcomeViewController *welcomeController = [[WelcomeViewController alloc]
+												initWithNibName:@"Welcome" bundle:nil];
+	self.welcomeViewController = welcomeController;
+	[welcomeController release];
+	[self.view insertSubview:welcomeViewController.view atIndex:0];
+	[self clearAllButtons];
+	
+	// save a pointer to this controller
+	self.welcomeViewController.rootViewController = self; 
+    
+	[super viewDidLoad];
 }
 
 - (void)viewDidUnload {
@@ -52,18 +58,28 @@
 		[questionOneViewController supportLandscape];
 		[questionTwoViewController supportLandscape];
 		[questionThreeViewController supportLandscape];
+		[welcomeViewController supportLandscape];
 	} 
 	if (fromInterfaceOrientation == UIInterfaceOrientationLandscapeLeft || 
 		fromInterfaceOrientation == UIInterfaceOrientationLandscapeRight) { 
 		[questionOneViewController supportPortrait];
 		[questionTwoViewController supportPortrait];
 		[questionThreeViewController supportPortrait];
+		[welcomeViewController supportPortrait];
 	}
 }
 																							
 
 #pragma mark -
-#pragma mark Navigation button bunk
+#pragma mark Navigation bar creation
+
+- (void) clearAllButtons {
+	[navigationBar popNavigationItemAnimated:NO];
+	UINavigationItem *item = [[UINavigationItem alloc] initWithTitle:@"Centare Group Survey"];
+	item.hidesBackButton = YES;
+	[navigationBar pushNavigationItem:item animated:NO];	
+	[item release];
+}
 
 - (void) createOnlyNextButton {
 	//Remove the current UINavigationItem
@@ -116,6 +132,27 @@
 	[item release];
 }
 
+- (void) createPreviousDoneButton {
+	//Remove the current UINavigationItem
+	[navigationBar popNavigationItemAnimated:NO];
+	UIBarButtonItem *previousButton = [[UIBarButtonItem alloc] initWithTitle:@"Previous Question"
+																	   style:UIBarButtonItemStyleBordered
+																	  target:self 
+																	  action:@selector(previousQuestion:)];
+	UIBarButtonItem *doneButton = [[UIBarButtonItem alloc] initWithTitle:@"Done"
+																   style:UIBarButtonItemStyleDone
+																  target:self 
+																  action:@selector(endSurvey)];
+	UINavigationItem *item = [[UINavigationItem alloc] initWithTitle:@"Centare Group Survey"];
+	item.leftBarButtonItem = previousButton;
+	item.rightBarButtonItem = doneButton;
+	item.hidesBackButton = YES;
+	[navigationBar pushNavigationItem:item animated:NO];
+	[previousButton release];
+	[doneButton release];
+	[item release];
+}
+
 #pragma mark -
 #pragma mark Actions
 
@@ -134,6 +171,9 @@
 															 initWithNibName:@"QuestionOneView" bundle:nil];
 			self.questionOneViewController = q1ViewController;
 			[q1ViewController release];
+			
+			// save a pointer to this controller
+			self.questionOneViewController.rootViewController = self;
 		}
 		[self createOnlyNextButton];
 		[questionTwoViewController viewWillAppear:YES]; 
@@ -149,6 +189,9 @@
 														   initWithNibName:@"QuestionTwoView" bundle:nil];
 			self.questionTwoViewController = q2ViewController;
 			[q2ViewController release];
+			
+			// save a pointer to this controller
+			self.questionTwoViewController.rootViewController = self;
 		}
 		[self createPreviousNextButton];
 		[questionThreeViewController viewWillAppear:YES]; 
@@ -175,6 +218,9 @@
 														   initWithNibName:@"QuestionTwoView" bundle:nil];
 			self.questionTwoViewController = q2ViewController;
 			[q2ViewController release];
+			
+			// save a pointer to this controller
+			self.questionTwoViewController.rootViewController = self;
 		}
 		[self createPreviousNextButton];
 		[questionOneViewController viewWillAppear:YES]; 
@@ -191,8 +237,10 @@
 			self.questionThreeViewController = q3ViewController;
 			[q3ViewController release];
 			
+			// save a pointer to this controller
+			self.questionThreeViewController.rootViewController = self;
 		}
-		[self createOnlyPreviousButton];
+		[self createPreviousDoneButton];
 		[questionTwoViewController viewWillAppear:YES]; 
 		[questionThreeViewController viewWillDisappear:YES];
 		[questionTwoViewController.view removeFromSuperview];
@@ -203,6 +251,64 @@
 	} else {
 		//On #3, can't circle back to #1
 	}
+	
+	[UIView commitAnimations];
+}
+
+#pragma mark -
+#pragma mark Misc
+
+- (void) beginSurvey {
+	
+	//Declare animation block
+	[UIView beginAnimations:@"View Curl" context:nil]; 
+	[UIView setAnimationDuration:.65]; 
+	[UIView setAnimationCurve:UIViewAnimationCurveEaseInOut];
+	[UIView setAnimationTransition:UIViewAnimationTransitionCurlUp forView:self.view cache:YES];
+	
+	if (self.questionOneViewController == nil) {
+		QuestionOneViewController *q1ViewController = [[QuestionOneViewController alloc] 
+													   initWithNibName:@"QuestionOneView" bundle:nil];
+		self.questionOneViewController = q1ViewController;
+		[q1ViewController release];
+		
+		// save a pointer to this controller
+		self.questionOneViewController.rootViewController = self;
+	}
+	[self createOnlyNextButton];
+	[welcomeViewController viewWillAppear:YES]; 
+	[questionOneViewController viewWillDisappear:YES];
+	[welcomeViewController.view removeFromSuperview];
+	[self.view insertSubview:questionOneViewController.view atIndex:0];
+	[questionOneViewController viewDidDisappear:YES]; 
+	[welcomeViewController viewDidAppear:YES];		
+	
+	[UIView commitAnimations];
+}
+
+- (void) endSurvey {
+	//Declare animation block
+	[UIView beginAnimations:@"View Curl" context:nil]; 
+	[UIView setAnimationDuration:.65]; 
+	[UIView setAnimationCurve:UIViewAnimationCurveEaseInOut];
+	[UIView setAnimationTransition:UIViewAnimationTransitionCurlDown forView:self.view cache:YES];
+	
+	if (self.welcomeViewController == nil) {
+		WelcomeViewController *welcomeController = [[WelcomeViewController alloc] 
+													   initWithNibName:@"Welcome" bundle:nil];
+		self.welcomeViewController = welcomeController;
+		[welcomeController release];
+		
+		// save a pointer to this controller
+		self.welcomeViewController.rootViewController = self;
+	}
+	[self clearAllButtons];
+	[questionThreeViewController viewWillAppear:YES]; 
+	[welcomeViewController viewWillDisappear:YES];
+	[questionThreeViewController.view removeFromSuperview];
+	[self.view insertSubview:welcomeViewController.view atIndex:0];
+	[welcomeViewController viewDidDisappear:YES]; 
+	[questionThreeViewController viewDidAppear:YES];		
 	
 	[UIView commitAnimations];
 }
@@ -230,6 +336,7 @@
 
 - (void)dealloc {
 	[navigationBar release];
+	[welcomeViewController release];
 	[questionOneViewController release];
 	[questionTwoViewController release];
 	[questionThreeViewController release];

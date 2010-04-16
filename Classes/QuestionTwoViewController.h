@@ -9,8 +9,10 @@
 #import <UIKit/UIKit.h>
 #import "RootViewController.h"
 
-@interface QuestionTwoViewController : UIViewController <QuestionViewController> {
-
+@interface QuestionTwoViewController : UIViewController <QuestionViewController, AutoAdjustingOrientation> {
+	RootViewController *rootViewController;
 }
+
+@property (retain, nonatomic) IBOutlet RootViewController *rootViewController;
 
 @end

@@ -11,8 +11,16 @@
 
 @implementation QuestionOneViewController
 
+@synthesize rootViewController;
+
 - (int)questionNumber {
 	return 1;
+}
+
+- (IBAction)answeredQuestion:(id)sender {
+	UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Answer Button Pressed" message:@"You pressed a button!" delegate:nil cancelButtonTitle:@"Yep, I did." otherButtonTitles:nil];
+	[alert show];
+	[alert release];
 }
 
 #pragma mark -
@@ -42,16 +50,12 @@
     return YES;
 }
 
-- (void)supportPortrait {
-	NSLog(@"current view before %@",self.view); 
+- (void)supportPortrait { 
 	self.view.frame = CGRectMake(0, 0, 768, 960); 
-	NSLog(@"current view after %@",self.view); 
 }
 
 - (void)supportLandscape {
-	NSLog(@"current view before %@",self.view); 
 	self.view.frame = CGRectMake(0, 0, 1024, 715); 
-	NSLog(@"current view after %@",self.view); 
 }
 
 #pragma mark -
@@ -66,6 +70,7 @@
 
 
 - (void)dealloc {
+	[rootViewController release];
     [super dealloc];
 }
 

@@ -11,6 +11,7 @@
 
 @implementation QuestionThreeViewController
 
+@synthesize rootViewController;
 
 - (int)questionNumber {
 	return 3;
@@ -48,15 +49,11 @@
 }
 
 - (void)supportPortrait {
-	NSLog(@"current view before %@",self.view); 
 	self.view.frame = CGRectMake(0, 0, 768, 960); 
-	NSLog(@"current view after %@",self.view);
 }
 
 - (void)supportLandscape {
-	NSLog(@"current view before %@",self.view); 
-	self.view.frame = CGRectMake(0, 0, 1024, 715); 
-	NSLog(@"current view after %@",self.view); 
+	self.view.frame = CGRectMake(0, 0, 1024, 715);  
 }
 
 #pragma mark -
@@ -71,6 +68,7 @@
 
 
 - (void)dealloc {
+	[rootViewController release];
     [super dealloc];
 }
 
