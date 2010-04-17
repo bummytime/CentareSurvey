@@ -22,6 +22,7 @@
 		C96A152B117261D70097D97D /* QuestionOneView.xib in Resources */ = {isa = PBXBuildFile; fileRef = C96A152A117261D70097D97D /* QuestionOneView.xib */; };
 		C96DFF141177DD0C00DF882E /* WelcomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C96DFF131177DD0C00DF882E /* WelcomeViewController.m */; };
 		C96DFF161177DE3100DF882E /* Welcome.xib in Resources */ = {isa = PBXBuildFile; fileRef = C96DFF151177DE3100DF882E /* Welcome.xib */; };
+		C9B5BC3F117A4BAE007F159C /* Centare_Icon_90x90.png in Resources */ = {isa = PBXBuildFile; fileRef = C9B5BC3E117A4BAE007F159C /* Centare_Icon_90x90.png */; };
 		C9EFADFB1174063C00014AF8 /* OrangeRectHighlight.png in Resources */ = {isa = PBXBuildFile; fileRef = C9EFADFA1174063C00014AF8 /* OrangeRectHighlight.png */; };
 		C9EFAE191174126400014AF8 /* QuestionThreeView.xib in Resources */ = {isa = PBXBuildFile; fileRef = C9EFAE171174126400014AF8 /* QuestionThreeView.xib */; };
 		C9EFAE1A1174126400014AF8 /* QuestionTwoView.xib in Resources */ = {isa = PBXBuildFile; fileRef = C9EFAE181174126400014AF8 /* QuestionTwoView.xib */; };
@@ -56,6 +57,7 @@
 		C96DFF121177DD0C00DF882E /* WelcomeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WelcomeViewController.h; sourceTree = "<group>"; };
 		C96DFF131177DD0C00DF882E /* WelcomeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WelcomeViewController.m; sourceTree = "<group>"; };
 		C96DFF151177DE3100DF882E /* Welcome.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = Welcome.xib; sourceTree = "<group>"; };
+		C9B5BC3E117A4BAE007F159C /* Centare_Icon_90x90.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Centare_Icon_90x90.png; path = Images/Centare_Icon_90x90.png; sourceTree = "<group>"; };
 		C9EFADFA1174063C00014AF8 /* OrangeRectHighlight.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = OrangeRectHighlight.png; path = Images/OrangeRectHighlight.png; sourceTree = "<group>"; };
 		C9EFAE171174126400014AF8 /* QuestionThreeView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = QuestionThreeView.xib; sourceTree = "<group>"; };
 		C9EFAE181174126400014AF8 /* QuestionTwoView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = QuestionTwoView.xib; sourceTree = "<group>"; };
@@ -126,6 +128,7 @@
 			isa = PBXGroup;
 			children = (
 				8D1107310486CEB800E47090 /* CentareSurvey-Info.plist */,
+				C9B5BC3E117A4BAE007F159C /* Centare_Icon_90x90.png */,
 				C9F402B1117248A200B8EDEF /* Centare.png */,
 				C9F402AF117248A200B8EDEF /* BlueRect.png */,
 				C9F402B0117248A200B8EDEF /* BlueRectHighlight.png */,
@@ -219,6 +222,7 @@
 				C96DFF161177DE3100DF882E /* Welcome.xib in Resources */,
 				C91D09231177FF5D00C3984C /* Padlock-icon.png in Resources */,
 				C91D09251178000000C3984C /* Padlock-icon_small.png in Resources */,
+				C9B5BC3F117A4BAE007F159C /* Centare_Icon_90x90.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
