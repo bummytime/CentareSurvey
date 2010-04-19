@@ -10,6 +10,9 @@
 @class QuestionOneViewController;
 @class QuestionTwoViewController;
 @class QuestionThreeViewController;
+@class QuestionFourViewController;
+@class QuestionFiveViewController;
+@class QuestionSixViewController;
 @class WelcomeViewController;
 
 
@@ -28,6 +31,9 @@
 	QuestionOneViewController *questionOneViewController;
 	QuestionTwoViewController *questionTwoViewController;
 	QuestionThreeViewController *questionThreeViewController;
+	QuestionFourViewController *questionFourViewController;
+	QuestionFiveViewController *questionFiveViewController;
+	QuestionSixViewController *questionSixViewController;
 }
 
 @property (retain, nonatomic) WelcomeViewController *welcomeViewController;
@@ -35,6 +41,10 @@
 @property (retain, nonatomic) QuestionOneViewController *questionOneViewController;
 @property (retain, nonatomic) QuestionTwoViewController *questionTwoViewController;
 @property (retain, nonatomic) QuestionThreeViewController *questionThreeViewController;
+@property (retain, nonatomic) QuestionFourViewController *questionFourViewController;
+@property (retain, nonatomic) QuestionFiveViewController *questionFiveViewController;
+@property (retain, nonatomic) QuestionSixViewController *questionSixViewController;
+
 
 - (IBAction)previousQuestion:(id)sender;
 - (IBAction)nextQuestion:(id)sender;

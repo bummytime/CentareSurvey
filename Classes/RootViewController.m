@@ -11,7 +11,9 @@
 #import "QuestionOneViewController.h"
 #import "QuestionTwoViewController.h"
 #import "QuestionThreeViewController.h"
-
+#import "QuestionFourViewController.h"
+#import "QuestionFiveViewController.h"
+#import "QuestionSixViewController.h"
 
 @implementation RootViewController
 @synthesize navigationBar;
@@ -19,6 +21,9 @@
 @synthesize questionOneViewController;
 @synthesize questionTwoViewController;
 @synthesize questionThreeViewController;
+@synthesize questionFourViewController;
+@synthesize questionFiveViewController;
+@synthesize questionSixViewController;
 
 
 #pragma mark -
@@ -58,6 +63,9 @@
 		[questionOneViewController supportLandscape];
 		[questionTwoViewController supportLandscape];
 		[questionThreeViewController supportLandscape];
+		[questionFourViewController supportLandscape];
+		[questionFiveViewController supportLandscape];
+		[questionSixViewController supportLandscape];
 		[welcomeViewController supportLandscape];
 	} 
 	if (fromInterfaceOrientation == UIInterfaceOrientationLandscapeLeft || 
@@ -65,6 +73,9 @@
 		[questionOneViewController supportPortrait];
 		[questionTwoViewController supportPortrait];
 		[questionThreeViewController supportPortrait];
+		[questionFourViewController supportPortrait];
+		[questionFiveViewController supportPortrait];
+		[questionSixViewController supportPortrait];
 		[welcomeViewController supportPortrait];
 	}
 }
@@ -164,7 +175,7 @@
 	[UIView setAnimationTransition:UIViewAnimationTransitionFlipFromLeft forView:self.view cache:YES];
 	
 	if (self.questionOneViewController.view.superview != nil) { 
-		//On #1, can't circle back to #3
+		//On #1, can't circle back to #6
 	} else if (self.questionTwoViewController.view.superview != nil) { //On #2, go to #1
 		if (self.questionOneViewController == nil) {
 			QuestionOneViewController *q1ViewController = [[QuestionOneViewController alloc] 
@@ -183,7 +194,8 @@
 		[questionOneViewController viewDidDisappear:YES]; 
 		[questionTwoViewController viewDidAppear:YES];		
 		
-	} else { //On #3, go to #2
+	
+	}  else if (self.questionThreeViewController.view.superview != nil) { //On #3, go to #2
 		if (self.questionTwoViewController == nil) {
 			QuestionTwoViewController *q2ViewController = [[QuestionTwoViewController alloc] 
 														   initWithNibName:@"QuestionTwoView" bundle:nil];
@@ -199,7 +211,61 @@
 		[questionThreeViewController.view removeFromSuperview];
 		[self.view insertSubview:questionTwoViewController.view atIndex:0];
 		[questionTwoViewController viewDidDisappear:YES]; 
-		[questionThreeViewController viewDidAppear:YES];
+		[questionThreeViewController viewDidAppear:YES];		
+		
+	}  else if (self.questionFourViewController.view.superview != nil) { //On #4, go to #3
+		if (self.questionThreeViewController == nil) {
+			QuestionThreeViewController *q3ViewController = [[QuestionThreeViewController alloc] 
+														   initWithNibName:@"QuestionThreeView" bundle:nil];
+			self.questionThreeViewController = q3ViewController;
+			[q3ViewController release];
+			
+			// save a pointer to this controller
+			self.questionThreeViewController.rootViewController = self;
+		}
+		[self createPreviousNextButton];
+		[questionFourViewController viewWillAppear:YES]; 
+		[questionThreeViewController viewWillDisappear:YES];
+		[questionFourViewController.view removeFromSuperview];
+		[self.view insertSubview:questionThreeViewController.view atIndex:0];
+		[questionThreeViewController viewDidDisappear:YES]; 
+		[questionFourViewController viewDidAppear:YES];		
+		
+	}  else if (self.questionFiveViewController.view.superview != nil) { //On #5, go to #4
+		if (self.questionFourViewController == nil) {
+			QuestionFourViewController *q4ViewController = [[QuestionFourViewController alloc] 
+														   initWithNibName:@"QuestionFourView" bundle:nil];
+			self.questionFourViewController = q4ViewController;
+			[q4ViewController release];
+			
+			// save a pointer to this controller
+			self.questionFourViewController.rootViewController = self;
+		}
+		[self createPreviousNextButton];
+		[questionFiveViewController viewWillAppear:YES]; 
+		[questionFourViewController viewWillDisappear:YES];
+		[questionFiveViewController.view removeFromSuperview];
+		[self.view insertSubview:questionFourViewController.view atIndex:0];
+		[questionFourViewController viewDidDisappear:YES]; 
+		[questionFiveViewController viewDidAppear:YES];		
+		
+	} else { //On #6, go to #5
+		if (self.questionFiveViewController == nil) {
+			QuestionFiveViewController *q5ViewController = [[QuestionFiveViewController alloc] 
+														   initWithNibName:@"QuestionFiveView" bundle:nil];
+			self.questionFiveViewController = q5ViewController;
+			[q5ViewController release];
+			
+			// save a pointer to this controller
+			self.questionFiveViewController.rootViewController = self;
+		}
+		[self createPreviousNextButton];
+		[questionSixViewController viewWillAppear:YES]; 
+		[questionFiveViewController viewWillDisappear:YES];
+		[questionSixViewController.view removeFromSuperview];
+		[self.view insertSubview:questionFiveViewController.view atIndex:0];
+		[questionFiveViewController viewDidDisappear:YES]; 
+		[questionSixViewController viewDidAppear:YES];
 	}
 	
 	[UIView commitAnimations];
@@ -240,7 +306,7 @@
 			// save a pointer to this controller
 			self.questionThreeViewController.rootViewController = self;
 		}
-		[self createPreviousDoneButton];
+		[self createPreviousNextButton];
 		[questionTwoViewController viewWillAppear:YES]; 
 		[questionThreeViewController viewWillDisappear:YES];
 		[questionTwoViewController.view removeFromSuperview];
@@ -248,8 +314,62 @@
 		[questionThreeViewController viewDidDisappear:YES]; 
 		[questionTwoViewController viewDidAppear:YES];
 		
+	}  else if (self.questionThreeViewController.view.superview != nil) { //On #3, go to #4 
+		if (self.questionFourViewController == nil) {
+			QuestionFourViewController *q4ViewController = [[QuestionFourViewController alloc] 
+															 initWithNibName:@"QuestionFourView" bundle:nil];
+			self.questionFourViewController = q4ViewController;
+			[q4ViewController release];
+			
+			// save a pointer to this controller
+			self.questionFourViewController.rootViewController = self;
+		}
+		[self createPreviousNextButton];
+		[questionThreeViewController viewWillAppear:YES]; 
+		[questionFourViewController viewWillDisappear:YES];
+		[questionThreeViewController.view removeFromSuperview];
+		[self.view insertSubview:questionFourViewController.view atIndex:0];
+		[questionFourViewController viewDidDisappear:YES]; 
+		[questionThreeViewController viewDidAppear:YES];
+		
+	} else if (self.questionFourViewController.view.superview != nil) { //On #4, go to #5 
+		if (self.questionFiveViewController == nil) {
+			QuestionFiveViewController *q5ViewController = [[QuestionFiveViewController alloc] 
+															 initWithNibName:@"QuestionFiveView" bundle:nil];
+			self.questionFiveViewController = q5ViewController;
+			[q5ViewController release];
+			
+			// save a pointer to this controller
+			self.questionFiveViewController.rootViewController = self;
+		}
+		[self createPreviousNextButton];
+		[questionFourViewController viewWillAppear:YES]; 
+		[questionFiveViewController viewWillDisappear:YES];
+		[questionFourViewController.view removeFromSuperview];
+		[self.view insertSubview:questionFiveViewController.view atIndex:0];
+		[questionFiveViewController viewDidDisappear:YES]; 
+		[questionFourViewController viewDidAppear:YES];
+		
+	} else if (self.questionFiveViewController.view.superview != nil) { //On #5, go to #6 
+		if (self.questionSixViewController == nil) {
+			QuestionSixViewController *q6ViewController = [[QuestionSixViewController alloc] 
+															 initWithNibName:@"QuestionSixView" bundle:nil];
+			self.questionSixViewController = q6ViewController;
+			[q6ViewController release];
+			
+			// save a pointer to this controller
+			self.questionSixViewController.rootViewController = self;
+		}
+		[self createPreviousDoneButton];
+		[questionFiveViewController viewWillAppear:YES]; 
+		[questionSixViewController viewWillDisappear:YES];
+		[questionFiveViewController.view removeFromSuperview];
+		[self.view insertSubview:questionSixViewController.view atIndex:0];
+		[questionSixViewController viewDidDisappear:YES]; 
+		[questionFiveViewController viewDidAppear:YES];
+		
 	} else {
-		//On #3, can't circle back to #1
+		//On #6, can't circle back to #1
 	}
 	
 	[UIView commitAnimations];
@@ -303,12 +423,12 @@
 		self.welcomeViewController.rootViewController = self;
 	}
 	[self clearAllButtons];
-	[questionThreeViewController viewWillAppear:YES]; 
+	[questionSixViewController viewWillAppear:YES]; 
 	[welcomeViewController viewWillDisappear:YES];
-	[questionThreeViewController.view removeFromSuperview];
+	[questionSixViewController.view removeFromSuperview];
 	[self.view insertSubview:welcomeViewController.view atIndex:0];
 	[welcomeViewController viewDidDisappear:YES]; 
-	[questionThreeViewController viewDidAppear:YES];		
+	[questionSixViewController viewDidAppear:YES];		
 	
 	[UIView commitAnimations];
 }
@@ -332,6 +452,18 @@
 	if (self.questionThreeViewController.view.superview == nil) {
 		self.questionThreeViewController = nil;
 	} 
+	
+	if (self.questionFourViewController.view.superview == nil) {
+		self.questionFourViewController = nil;
+	} 
+	
+	if (self.questionFiveViewController.view.superview == nil) {
+		self.questionFiveViewController = nil;
+	} 
+	
+	if (self.questionSixViewController.view.superview == nil) {
+		self.questionSixViewController = nil;
+	} 
 }
 
 - (void)dealloc {
@@ -340,6 +472,9 @@
 	[questionOneViewController release];
 	[questionTwoViewController release];
 	[questionThreeViewController release];
+	[questionFourViewController release];
+	[questionFiveViewController release];
+	[questionSixViewController release];
     [super dealloc];
 }
 

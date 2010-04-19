@@ -15,6 +15,14 @@
 		28AD733F0D9D9553002E5188 /* MainWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 28AD733E0D9D9553002E5188 /* MainWindow.xib */; };
 		C91D09231177FF5D00C3984C /* Padlock-icon.png in Resources */ = {isa = PBXBuildFile; fileRef = C91D09221177FF5D00C3984C /* Padlock-icon.png */; };
 		C91D09251178000000C3984C /* Padlock-icon_small.png in Resources */ = {isa = PBXBuildFile; fileRef = C91D09241178000000C3984C /* Padlock-icon_small.png */; };
+		C9679982117BB13B00FB1A88 /* QuestionSixView.xib in Resources */ = {isa = PBXBuildFile; fileRef = C967997E117BB13B00FB1A88 /* QuestionSixView.xib */; };
+		C9679987117BB19200FB1A88 /* QuestionTwoView.xib in Resources */ = {isa = PBXBuildFile; fileRef = C9679986117BB19200FB1A88 /* QuestionTwoView.xib */; };
+		C967998C117BB29D00FB1A88 /* QuestionFiveView.xib in Resources */ = {isa = PBXBuildFile; fileRef = C9679989117BB29D00FB1A88 /* QuestionFiveView.xib */; };
+		C967998D117BB29D00FB1A88 /* QuestionFourView.xib in Resources */ = {isa = PBXBuildFile; fileRef = C967998A117BB29D00FB1A88 /* QuestionFourView.xib */; };
+		C967998E117BB29D00FB1A88 /* QuestionThreeView.xib in Resources */ = {isa = PBXBuildFile; fileRef = C967998B117BB29D00FB1A88 /* QuestionThreeView.xib */; };
+		C967999B117BB4A700FB1A88 /* QuestionSixViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C967999A117BB4A700FB1A88 /* QuestionSixViewController.m */; };
+		C96799A0117BB4B300FB1A88 /* QuestionFiveViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C967999D117BB4B300FB1A88 /* QuestionFiveViewController.m */; };
+		C96799A1117BB4B300FB1A88 /* QuestionFourViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C967999F117BB4B300FB1A88 /* QuestionFourViewController.m */; };
 		C96A143F117249720097D97D /* RootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C96A143E117249720097D97D /* RootViewController.m */; };
 		C96A14431172576F0097D97D /* QuestionOneViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C96A14421172576F0097D97D /* QuestionOneViewController.m */; };
 		C96A1446117257820097D97D /* QuestionTwoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C96A1445117257820097D97D /* QuestionTwoViewController.m */; };
@@ -24,8 +32,6 @@
 		C96DFF161177DE3100DF882E /* Welcome.xib in Resources */ = {isa = PBXBuildFile; fileRef = C96DFF151177DE3100DF882E /* Welcome.xib */; };
 		C9B5BC3F117A4BAE007F159C /* Centare_Icon_90x90.png in Resources */ = {isa = PBXBuildFile; fileRef = C9B5BC3E117A4BAE007F159C /* Centare_Icon_90x90.png */; };
 		C9EFADFB1174063C00014AF8 /* OrangeRectHighlight.png in Resources */ = {isa = PBXBuildFile; fileRef = C9EFADFA1174063C00014AF8 /* OrangeRectHighlight.png */; };
-		C9EFAE191174126400014AF8 /* QuestionThreeView.xib in Resources */ = {isa = PBXBuildFile; fileRef = C9EFAE171174126400014AF8 /* QuestionThreeView.xib */; };
-		C9EFAE1A1174126400014AF8 /* QuestionTwoView.xib in Resources */ = {isa = PBXBuildFile; fileRef = C9EFAE181174126400014AF8 /* QuestionTwoView.xib */; };
 		C9F402B3117248A200B8EDEF /* BlueRect.png in Resources */ = {isa = PBXBuildFile; fileRef = C9F402AF117248A200B8EDEF /* BlueRect.png */; };
 		C9F402B4117248A200B8EDEF /* BlueRectHighlight.png in Resources */ = {isa = PBXBuildFile; fileRef = C9F402B0117248A200B8EDEF /* BlueRectHighlight.png */; };
 		C9F402B5117248A200B8EDEF /* Centare.png in Resources */ = {isa = PBXBuildFile; fileRef = C9F402B1117248A200B8EDEF /* Centare.png */; };
@@ -45,6 +51,17 @@
 		8D1107310486CEB800E47090 /* CentareSurvey-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "CentareSurvey-Info.plist"; plistStructureDefinitionIdentifier = "com.apple.xcode.plist.structure-definition.iphone.info-plist"; sourceTree = "<group>"; };
 		C91D09221177FF5D00C3984C /* Padlock-icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Padlock-icon.png"; path = "Images/Padlock-icon.png"; sourceTree = "<group>"; };
 		C91D09241178000000C3984C /* Padlock-icon_small.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Padlock-icon_small.png"; path = "Images/Padlock-icon_small.png"; sourceTree = "<group>"; };
+		C967997E117BB13B00FB1A88 /* QuestionSixView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = QuestionSixView.xib; sourceTree = "<group>"; };
+		C9679986117BB19200FB1A88 /* QuestionTwoView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = QuestionTwoView.xib; sourceTree = "<group>"; };
+		C9679989117BB29D00FB1A88 /* QuestionFiveView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = QuestionFiveView.xib; sourceTree = "<group>"; };
+		C967998A117BB29D00FB1A88 /* QuestionFourView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = QuestionFourView.xib; sourceTree = "<group>"; };
+		C967998B117BB29D00FB1A88 /* QuestionThreeView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = QuestionThreeView.xib; sourceTree = "<group>"; };
+		C9679999117BB4A700FB1A88 /* QuestionSixViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QuestionSixViewController.h; sourceTree = "<group>"; };
+		C967999A117BB4A700FB1A88 /* QuestionSixViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QuestionSixViewController.m; sourceTree = "<group>"; };
+		C967999C117BB4B300FB1A88 /* QuestionFiveViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QuestionFiveViewController.h; sourceTree = "<group>"; };
+		C967999D117BB4B300FB1A88 /* QuestionFiveViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QuestionFiveViewController.m; sourceTree = "<group>"; };
+		C967999E117BB4B300FB1A88 /* QuestionFourViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QuestionFourViewController.h; sourceTree = "<group>"; };
+		C967999F117BB4B300FB1A88 /* QuestionFourViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QuestionFourViewController.m; sourceTree = "<group>"; };
 		C96A143D117249720097D97D /* RootViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RootViewController.h; sourceTree = "<group>"; };
 		C96A143E117249720097D97D /* RootViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RootViewController.m; sourceTree = "<group>"; };
 		C96A14411172576F0097D97D /* QuestionOneViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QuestionOneViewController.h; sourceTree = "<group>"; };
@@ -59,8 +76,6 @@
 		C96DFF151177DE3100DF882E /* Welcome.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = Welcome.xib; sourceTree = "<group>"; };
 		C9B5BC3E117A4BAE007F159C /* Centare_Icon_90x90.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Centare_Icon_90x90.png; path = Images/Centare_Icon_90x90.png; sourceTree = "<group>"; };
 		C9EFADFA1174063C00014AF8 /* OrangeRectHighlight.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = OrangeRectHighlight.png; path = Images/OrangeRectHighlight.png; sourceTree = "<group>"; };
-		C9EFAE171174126400014AF8 /* QuestionThreeView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = QuestionThreeView.xib; sourceTree = "<group>"; };
-		C9EFAE181174126400014AF8 /* QuestionTwoView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = QuestionTwoView.xib; sourceTree = "<group>"; };
 		C9F402AF117248A200B8EDEF /* BlueRect.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = BlueRect.png; path = Images/BlueRect.png; sourceTree = "<group>"; };
 		C9F402B0117248A200B8EDEF /* BlueRectHighlight.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = BlueRectHighlight.png; path = Images/BlueRectHighlight.png; sourceTree = "<group>"; };
 		C9F402B1117248A200B8EDEF /* Centare.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Centare.png; path = Images/Centare.png; sourceTree = "<group>"; };
@@ -136,11 +151,14 @@
 				C9F402B2117248A200B8EDEF /* GreenRectHighlight.png */,
 				C91D09241178000000C3984C /* Padlock-icon_small.png */,
 				C91D09221177FF5D00C3984C /* Padlock-icon.png */,
-				C9EFAE171174126400014AF8 /* QuestionThreeView.xib */,
-				C9EFAE181174126400014AF8 /* QuestionTwoView.xib */,
-				C96A152A117261D70097D97D /* QuestionOneView.xib */,
-				28AD733E0D9D9553002E5188 /* MainWindow.xib */,
 				C96DFF151177DE3100DF882E /* Welcome.xib */,
+				28AD733E0D9D9553002E5188 /* MainWindow.xib */,
+				C96A152A117261D70097D97D /* QuestionOneView.xib */,
+				C9679986117BB19200FB1A88 /* QuestionTwoView.xib */,
+				C967998B117BB29D00FB1A88 /* QuestionThreeView.xib */,
+				C967998A117BB29D00FB1A88 /* QuestionFourView.xib */,
+				C9679989117BB29D00FB1A88 /* QuestionFiveView.xib */,
+				C967997E117BB13B00FB1A88 /* QuestionSixView.xib */,
 			);
 			name = Resources;
 			sourceTree = "<group>";
@@ -164,6 +182,12 @@
 				C96A1445117257820097D97D /* QuestionTwoViewController.m */,
 				C96A14471172578F0097D97D /* QuestionThreeViewController.h */,
 				C96A14481172578F0097D97D /* QuestionThreeViewController.m */,
+				C967999E117BB4B300FB1A88 /* QuestionFourViewController.h */,
+				C967999F117BB4B300FB1A88 /* QuestionFourViewController.m */,
+				C967999C117BB4B300FB1A88 /* QuestionFiveViewController.h */,
+				C967999D117BB4B300FB1A88 /* QuestionFiveViewController.m */,
+				C9679999117BB4A700FB1A88 /* QuestionSixViewController.h */,
+				C967999A117BB4A700FB1A88 /* QuestionSixViewController.m */,
 			);
 			name = Questions;
 			sourceTree = "<group>";
@@ -217,12 +241,15 @@
 				C9F402B6117248A200B8EDEF /* GreenRectHighlight.png in Resources */,
 				C96A152B117261D70097D97D /* QuestionOneView.xib in Resources */,
 				C9EFADFB1174063C00014AF8 /* OrangeRectHighlight.png in Resources */,
-				C9EFAE191174126400014AF8 /* QuestionThreeView.xib in Resources */,
-				C9EFAE1A1174126400014AF8 /* QuestionTwoView.xib in Resources */,
 				C96DFF161177DE3100DF882E /* Welcome.xib in Resources */,
 				C91D09231177FF5D00C3984C /* Padlock-icon.png in Resources */,
 				C91D09251178000000C3984C /* Padlock-icon_small.png in Resources */,
 				C9B5BC3F117A4BAE007F159C /* Centare_Icon_90x90.png in Resources */,
+				C9679982117BB13B00FB1A88 /* QuestionSixView.xib in Resources */,
+				C9679987117BB19200FB1A88 /* QuestionTwoView.xib in Resources */,
+				C967998C117BB29D00FB1A88 /* QuestionFiveView.xib in Resources */,
+				C967998D117BB29D00FB1A88 /* QuestionFourView.xib in Resources */,
+				C967998E117BB29D00FB1A88 /* QuestionThreeView.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -240,6 +267,9 @@
 				C96A1446117257820097D97D /* QuestionTwoViewController.m in Sources */,
 				C96A14491172578F0097D97D /* QuestionThreeViewController.m in Sources */,
 				C96DFF141177DD0C00DF882E /* WelcomeViewController.m in Sources */,
+				C967999B117BB4A700FB1A88 /* QuestionSixViewController.m in Sources */,
+				C96799A0117BB4B300FB1A88 /* QuestionFiveViewController.m in Sources */,
+				C96799A1117BB4B300FB1A88 /* QuestionFourViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
