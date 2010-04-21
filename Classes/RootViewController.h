@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+
 @class QuestionOneViewController;
 @class QuestionTwoViewController;
 @class QuestionThreeViewController;
@@ -14,6 +15,8 @@
 @class QuestionFiveViewController;
 @class QuestionSixViewController;
 @class WelcomeViewController;
+@class FMDatabase;
+@class Survey;
 
 
 @protocol QuestionViewController
@@ -25,7 +28,10 @@
 	- (void)supportLandscape;
 @end
 
+#define kFilename    @"centaresurveydata.sqlite3"
+
 @interface RootViewController : UIViewController {
+	FMDatabase *db;
 	UINavigationBar *navigationBar;
 	WelcomeViewController *welcomeViewController;
 	QuestionOneViewController *questionOneViewController;
@@ -34,8 +40,10 @@
 	QuestionFourViewController *questionFourViewController;
 	QuestionFiveViewController *questionFiveViewController;
 	QuestionSixViewController *questionSixViewController;
+	Survey *currentSurvey;
 }
 
+@property (retain, nonatomic) FMDatabase *db;
 @property (retain, nonatomic) WelcomeViewController *welcomeViewController;
 @property (retain, nonatomic) IBOutlet UINavigationBar *navigationBar;
 @property (retain, nonatomic) QuestionOneViewController *questionOneViewController;
@@ -44,6 +52,7 @@
 @property (retain, nonatomic) QuestionFourViewController *questionFourViewController;
 @property (retain, nonatomic) QuestionFiveViewController *questionFiveViewController;
 @property (retain, nonatomic) QuestionSixViewController *questionSixViewController;
+@property (retain, nonatomic) Survey *currentSurvey;
 
 
 - (IBAction)previousQuestion:(id)sender;
@@ -54,5 +63,7 @@
 - (void) createPreviousNextButton;
 - (void) beginSurvey;
 - (void) endSurvey;
+- (void) saveCurrentSurvey;
+- (NSString *)dataFilePath;
 
 @end

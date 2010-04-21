@@ -13,6 +13,9 @@
 	RootViewController *rootViewController;
 }
 
+- (IBAction)answeredYes:(id)sender;
+- (IBAction)answeredNo:(id)sender;
+
 @property (retain, nonatomic) IBOutlet RootViewController *rootViewController;
 
 @end

@@ -7,6 +7,7 @@
 //
 
 #import "QuestionOneViewController.h"
+#import "Survey.h"
 
 
 @implementation QuestionOneViewController
@@ -17,10 +18,12 @@
 	return 1;
 }
 
-- (IBAction)answeredQuestion:(id)sender {
-	UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Answer Button Pressed" message:@"You pressed a button!" delegate:nil cancelButtonTitle:@"Yep, I did." otherButtonTitles:nil];
-	[alert show];
-	[alert release];
+- (IBAction)answeredYes:(id)sender {
+	self.rootViewController.currentSurvey.question1Answer = @"Yes";
+}
+
+- (IBAction)answeredNo:(id)sender {
+	self.rootViewController.currentSurvey.question1Answer = @"No";
 }
 
 #pragma mark -

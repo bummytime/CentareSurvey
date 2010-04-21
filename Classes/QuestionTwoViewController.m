@@ -7,6 +7,7 @@
 //
 
 #import "QuestionTwoViewController.h"
+#import "Survey.h"
 
 
 @implementation QuestionTwoViewController
@@ -16,6 +17,23 @@
 - (int)questionNumber {
 	return 2;
 }
+
+- (IBAction)answeredAndroid:(id)sender {
+	self.rootViewController.currentSurvey.question2Answer = @"Android";
+}
+
+- (IBAction)answerediPhone:(id)sender {
+	self.rootViewController.currentSurvey.question2Answer = @"iPhone";
+}
+
+- (IBAction)answeredBlackBerry:(id)sender {
+	self.rootViewController.currentSurvey.question2Answer = @"BlackBerry";
+}
+
+- (IBAction)answeredOther:(id)sender {
+	self.rootViewController.currentSurvey.question2Answer = @"Other";
+}
+
 
 #pragma mark -
 #pragma mark View management

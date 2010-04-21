@@ -7,14 +7,19 @@
 //
 
 #import "QuestionFiveViewController.h"
-
+#import "Survey.h"
 
 @implementation QuestionFiveViewController
 
 @synthesize rootViewController;
+@synthesize slidy;
 
 - (int)questionNumber {
 	return 5;
+}
+
+- (IBAction)answeredQuestion:(id)sender {
+	self.rootViewController.currentSurvey.question5Answer = [NSString stringWithFormat:@"%f", slidy.value];
 }
 
 #pragma mark -
@@ -69,6 +74,7 @@
 
 - (void)dealloc {
 	[rootViewController release];
+	[slidy release];
     [super dealloc];
 }
 

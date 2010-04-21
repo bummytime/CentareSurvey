@@ -7,7 +7,7 @@
 //
 
 #import "QuestionSixViewController.h"
-
+#import "Survey.h"
 
 @implementation QuestionSixViewController
 
@@ -16,6 +16,11 @@
 
 - (int)questionNumber {
 	return 6;
+}
+
+- (IBAction)answeredQuestion:(id)sender {
+	self.rootViewController.currentSurvey.question6Answer = generalCommentBlock.text;
+	[self.rootViewController endSurvey];
 }
 
 #pragma mark -

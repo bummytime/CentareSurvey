@@ -7,6 +7,7 @@
 //
 
 #import "QuestionThreeViewController.h"
+#import "Survey.h"
 
 
 @implementation QuestionThreeViewController
@@ -15,6 +16,14 @@
 
 - (int)questionNumber {
 	return 3;
+}
+
+- (IBAction)answeredYes:(id)sender {
+	self.rootViewController.currentSurvey.question3Answer = @"Yes";
+}
+
+- (IBAction)answeredNo:(id)sender {
+	self.rootViewController.currentSurvey.question3Answer = @"No";
 }
 
 #pragma mark -

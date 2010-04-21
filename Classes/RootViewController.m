@@ -14,8 +14,13 @@
 #import "QuestionFourViewController.h"
 #import "QuestionFiveViewController.h"
 #import "QuestionSixViewController.h"
+#import "FMDatabase.h"
+#import "FMDatabaseAdditions.h"
+#import "Survey.h"
 
 @implementation RootViewController
+
+@synthesize db;
 @synthesize navigationBar;
 @synthesize welcomeViewController;
 @synthesize questionOneViewController;
@@ -24,7 +29,9 @@
 @synthesize questionFourViewController;
 @synthesize questionFiveViewController;
 @synthesize questionSixViewController;
+@synthesize currentSurvey;
 
+#define FMDBQuickCheck(SomeBool) { if (!(SomeBool)) { NSLog(@"Failure on line %d", __LINE__); return 123; } }
 
 #pragma mark -
 #pragma mark View management
@@ -40,6 +47,29 @@
 	// save a pointer to this controller
 	self.welcomeViewController.rootViewController = self; 
     
+	db = [FMDatabase databaseWithPath:[self dataFilePath]];
+    if (![db open]) {
+        NSLog(@"Could not open db.");
+		NSAssert(0, @"Error opening DB");
+    }
+	
+	[db retain];
+	
+    [db setShouldCacheStatements:YES];
+	NSString *createTableSQL = @"CREATE TABLE IF NOT EXISTS SURVEY (NAME TEXT,EMAIL TEXT,QUESTION1ANSWER TEXT,QUESTION2ANSWER TEXT,QUESTION3ANSWER TEXT,QUESTION4ANSWER TEXT,QUESTION5ANSWER TEXT,QUESTION6ANSWER TEXT);";
+    [db executeUpdate:createTableSQL];
+	[createTableSQL release];
+    if ([db hadError]) {
+        NSLog(@"Err %d: %@", [db lastErrorCode], [db lastErrorMessage]);
+		NSAssert(0, @"Error creating table in DB");
+    }
+	
+	UIApplication *app = [UIApplication sharedApplication];
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(applicationWillTerminate:)
+                                                 name:UIApplicationWillTerminateNotification 
+                                               object:app];
+	
 	[super viewDidLoad];
 }
 
@@ -47,6 +77,11 @@
     [super viewDidUnload];
     // Release any retained subviews of the main view.
     // e.g. self.myOutlet = nil;
+}
+
+
+- (void)applicationWillTerminate:(NSNotification *)notification {
+	[db close];
 }
 
 
@@ -360,7 +395,7 @@
 			// save a pointer to this controller
 			self.questionSixViewController.rootViewController = self;
 		}
-		[self createPreviousDoneButton];
+		[self createOnlyPreviousButton];
 		[questionFiveViewController viewWillAppear:YES]; 
 		[questionSixViewController viewWillDisappear:YES];
 		[questionFiveViewController.view removeFromSuperview];
@@ -379,6 +414,9 @@
 #pragma mark Misc
 
 - (void) beginSurvey {
+	
+	//Setup a new survey model
+	currentSurvey = [[Survey alloc] init];
 	
 	//Declare animation block
 	[UIView beginAnimations:@"View Curl" context:nil]; 
@@ -407,6 +445,9 @@
 }
 
 - (void) endSurvey {
+
+	[self saveCurrentSurvey];
+	
 	//Declare animation block
 	[UIView beginAnimations:@"View Curl" context:nil]; 
 	[UIView setAnimationDuration:.65]; 
@@ -431,6 +472,31 @@
 	[questionSixViewController viewDidAppear:YES];		
 	
 	[UIView commitAnimations];
+}
+
+
+- (void) saveCurrentSurvey {
+	
+	//Save the survey in the db
+	[db beginTransaction];
+        [db executeUpdate:@"INSERT INTO SURVEY (NAME,EMAIL,QUESTION1ANSWER,QUESTION2ANSWER,QUESTION3ANSWER, QUESTION4ANSWER,QUESTION5ANSWER,QUESTION6ANSWER) values (?, ?, ?, ?, ?, ?, ?, ?)" ,
+		 currentSurvey.surveyTakerName,
+		 currentSurvey.surveyTakerEmail,
+		 currentSurvey.question1Answer,
+ 		 currentSurvey.question2Answer,
+ 		 currentSurvey.question3Answer,
+ 		 currentSurvey.question4Answer,
+ 		 currentSurvey.question5Answer,
+		 currentSurvey.question6Answer];
+    [db commit];
+	[currentSurvey release];
+}
+
+
+- (NSString *) dataFilePath {
+    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+    NSString *documentsDirectory = [paths objectAtIndex:0];
+    return [documentsDirectory stringByAppendingPathComponent:kFilename];
 }
 
 #pragma mark -
@@ -475,6 +541,8 @@
 	[questionFourViewController release];
 	[questionFiveViewController release];
 	[questionSixViewController release];
+	[currentSurvey release];
+	[db release];
     [super dealloc];
 }
 

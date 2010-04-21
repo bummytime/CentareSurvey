@@ -7,6 +7,7 @@
 //
 
 #import "WelcomeViewController.h"
+#import "Survey.h"
 
 @implementation WelcomeViewController
 
@@ -16,6 +17,15 @@
 
 #pragma mark -
 #pragma mark View management
+
+- (void)viewDidLoad {
+    [super viewDidLoad];
+	if (UIDeviceOrientationIsPortrait(self.interfaceOrientation)) {
+	[self supportPortrait];
+	} else {
+		[self supportLandscape];
+	}
+}
 
 - (void)viewDidUnload {
     [super viewDidUnload];
@@ -43,6 +53,8 @@
 #pragma mark Actions
 
 - (IBAction)startSurvey:(id)sender {
+	self.rootViewController.currentSurvey.surveyTakerName = [surveyParticipantName text];
+	self.rootViewController.currentSurvey.surveyTakerEmail = [surveyParticipantEmail text];
 	[self.rootViewController beginSurvey];
 }
 

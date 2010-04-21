@@ -13,6 +13,11 @@
 	RootViewController *rootViewController;
 }
 
+- (IBAction)answeredAndroid:(id)sender;
+- (IBAction)answerediPhone:(id)sender;
+- (IBAction)answeredBlackBerry:(id)sender;
+- (IBAction)answeredOther:(id)sender;
+
 @property (retain, nonatomic) IBOutlet RootViewController *rootViewController;
 
 @end

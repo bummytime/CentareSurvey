@@ -14,6 +14,8 @@
 	UITextView *generalCommentBlock;
 }
 
+- (IBAction)answeredQuestion:(id)sender;
+
 @property (retain, nonatomic) IBOutlet RootViewController *rootViewController;
 @property (retain, nonatomic) IBOutlet UITextView *generalCommentBlock;
 

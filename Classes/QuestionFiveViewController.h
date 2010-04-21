@@ -11,8 +11,12 @@
 
 @interface QuestionFiveViewController : UIViewController <QuestionViewController, AutoAdjustingOrientation> {
 	RootViewController *rootViewController;
+	UISlider *slidy;
 }
 
+- (IBAction)answeredQuestion:(id)sender;
+
 @property (retain, nonatomic) IBOutlet RootViewController *rootViewController;
+@property (retain, nonatomic) IBOutlet UISlider *slidy;
 
 @end
