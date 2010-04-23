@@ -26,19 +26,18 @@
 #pragma mark -
 #pragma mark View management
 
+- (void)viewWillAppear:(BOOL)animated {
+	generalCommentBlock.backgroundColor = [UIColor whiteColor];	
+    [super viewWillAppear:animated];
+}
+
 - (void)viewDidLoad {
-    [super viewDidLoad];
+    [super viewDidLoad];	
 	if (UIDeviceOrientationIsPortrait(self.interfaceOrientation)) {
 		[self supportPortrait];
 	} else {
 		[self supportLandscape];
 	}
-	
-	generalCommentBlock.backgroundColor = [UIColor whiteColor];	
-}
-
--(void) viewWillAppear:(BOOL)animated {
-	
 }
 
 - (void)viewDidUnload {

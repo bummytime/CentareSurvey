@@ -11,6 +11,10 @@
 
 @interface QuestionTwoViewController : UIViewController <QuestionViewController, AutoAdjustingOrientation> {
 	RootViewController *rootViewController;
+	UIButton *androidButton;
+	UIButton *iPhoneButton;
+	UIButton *blackBerryButton;
+	UIButton *otherButton;
 }
 
 - (IBAction)answeredAndroid:(id)sender;
@@ -19,5 +23,9 @@
 - (IBAction)answeredOther:(id)sender;
 
 @property (retain, nonatomic) IBOutlet RootViewController *rootViewController;
+@property (retain, nonatomic) IBOutlet UIButton *androidButton;
+@property (retain, nonatomic) IBOutlet UIButton *iPhoneButton;
+@property (retain, nonatomic) IBOutlet UIButton *blackBerryButton;
+@property (retain, nonatomic) IBOutlet UIButton *otherButton;
 
 @end

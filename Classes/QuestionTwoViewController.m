@@ -13,30 +13,62 @@
 @implementation QuestionTwoViewController
 
 @synthesize rootViewController;
+@synthesize androidButton;
+@synthesize iPhoneButton;
+@synthesize blackBerryButton;
+@synthesize otherButton;
 
 - (int)questionNumber {
 	return 2;
 }
 
 - (IBAction)answeredAndroid:(id)sender {
-	self.rootViewController.currentSurvey.question2Answer = @"Android";
+	if (![self.rootViewController.currentSurvey.question2Answer isEqualToString:@"Android"]) {
+		self.rootViewController.currentSurvey.question2Answer = @"Android";
+		[androidButton setBackgroundImage:[UIImage imageNamed:@"purple_button_overlay.png"] forState:UIControlStateNormal];
+		[iPhoneButton setBackgroundImage:[UIImage imageNamed:@"transparent_button_overlay.png"] forState:UIControlStateNormal];
+		[blackBerryButton setBackgroundImage:[UIImage imageNamed:@"transparent_button_overlay.png"] forState:UIControlStateNormal];
+		[otherButton setBackgroundImage:[UIImage imageNamed:@"transparent_button_overlay.png"] forState:UIControlStateNormal];
+	}
 }
 
 - (IBAction)answerediPhone:(id)sender {
-	self.rootViewController.currentSurvey.question2Answer = @"iPhone";
+	if (![self.rootViewController.currentSurvey.question2Answer isEqualToString:@"iPhone"]) {
+		self.rootViewController.currentSurvey.question2Answer = @"iPhone";
+		[iPhoneButton setBackgroundImage:[UIImage imageNamed:@"purple_button_overlay.png"] forState:UIControlStateNormal];
+		[androidButton setBackgroundImage:[UIImage imageNamed:@"transparent_button_overlay.png"] forState:UIControlStateNormal];
+		[blackBerryButton setBackgroundImage:[UIImage imageNamed:@"transparent_button_overlay.png"] forState:UIControlStateNormal];
+		[otherButton setBackgroundImage:[UIImage imageNamed:@"transparent_button_overlay.png"] forState:UIControlStateNormal];
+	}
 }
 
-- (IBAction)answeredBlackBerry:(id)sender {
-	self.rootViewController.currentSurvey.question2Answer = @"BlackBerry";
+- (IBAction)answeredBlackBerry:(id)sender {	
+	if (![self.rootViewController.currentSurvey.question2Answer isEqualToString:@"BlackBerry"]) {
+		self.rootViewController.currentSurvey.question2Answer = @"BlackBerry";
+		[blackBerryButton setBackgroundImage:[UIImage imageNamed:@"purple_button_overlay.png"] forState:UIControlStateNormal];
+		[androidButton setBackgroundImage:[UIImage imageNamed:@"transparent_button_overlay.png"] forState:UIControlStateNormal];
+		[iPhoneButton setBackgroundImage:[UIImage imageNamed:@"transparent_button_overlay.png"] forState:UIControlStateNormal];
+		[otherButton setBackgroundImage:[UIImage imageNamed:@"transparent_button_overlay.png"] forState:UIControlStateNormal];
+	}
 }
 
 - (IBAction)answeredOther:(id)sender {
-	self.rootViewController.currentSurvey.question2Answer = @"Other";
+	if (![self.rootViewController.currentSurvey.question2Answer isEqualToString:@"Other"]) {
+		self.rootViewController.currentSurvey.question2Answer = @"Other";
+		[otherButton setBackgroundImage:[UIImage imageNamed:@"purple_button_overlay.png"] forState:UIControlStateNormal];
+		[androidButton setBackgroundImage:[UIImage imageNamed:@"transparent_button_overlay.png"] forState:UIControlStateNormal];
+		[blackBerryButton setBackgroundImage:[UIImage imageNamed:@"transparent_button_overlay.png"] forState:UIControlStateNormal];
+		[iPhoneButton setBackgroundImage:[UIImage imageNamed:@"transparent_button_overlay.png"] forState:UIControlStateNormal];
+	}
 }
 
 
 #pragma mark -
 #pragma mark View management
+
+- (void)viewWillAppear:(BOOL)animated {
+	[super viewWillAppear:animated];
+}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -83,6 +115,10 @@
 
 - (void)dealloc {
 	[rootViewController release];
+	[androidButton release];
+	[iPhoneButton release];
+	[blackBerryButton release];
+	[otherButton release];
     [super dealloc];
 }
 

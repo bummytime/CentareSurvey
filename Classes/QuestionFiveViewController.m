@@ -25,6 +25,10 @@
 #pragma mark -
 #pragma mark View management
 
+- (void)viewWillAppear:(BOOL)animated {
+	[super viewWillAppear:animated];
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
 	if (UIDeviceOrientationIsPortrait(self.interfaceOrientation)) {
@@ -32,10 +36,6 @@
 	} else {
 		[self supportLandscape];
 	}
-}
-
--(void) viewWillAppear:(BOOL)animated {
-	
 }
 
 - (void)viewDidUnload {

@@ -402,6 +402,7 @@
 		[self.view insertSubview:questionSixViewController.view atIndex:0];
 		[questionSixViewController viewDidDisappear:YES]; 
 		[questionFiveViewController viewDidAppear:YES];
+		[questionSixViewController.generalCommentBlock becomeFirstResponder];
 		
 	} else {
 		//On #6, can't circle back to #1
@@ -417,6 +418,8 @@
 	
 	//Setup a new survey model
 	currentSurvey = [[Survey alloc] init];
+	//Quick HACK: Give the question with a UISlider a default answer.
+	currentSurvey.question5Answer = @"5.0";
 	
 	//Declare animation block
 	[UIView beginAnimations:@"View Curl" context:nil]; 
@@ -447,6 +450,8 @@
 - (void) endSurvey {
 
 	[self saveCurrentSurvey];
+	welcomeViewController.surveyParticipantName.text = @"";
+	welcomeViewController.surveyParticipantEmail.text = @"";
 	
 	//Declare animation block
 	[UIView beginAnimations:@"View Curl" context:nil]; 

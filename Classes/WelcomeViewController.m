@@ -53,9 +53,9 @@
 #pragma mark Actions
 
 - (IBAction)startSurvey:(id)sender {
-	self.rootViewController.currentSurvey.surveyTakerName = [surveyParticipantName text];
-	self.rootViewController.currentSurvey.surveyTakerEmail = [surveyParticipantEmail text];
 	[self.rootViewController beginSurvey];
+	self.rootViewController.currentSurvey.surveyTakerName = surveyParticipantName.text;
+	self.rootViewController.currentSurvey.surveyTakerEmail = surveyParticipantEmail.text;	
 }
 
 - (IBAction)launchAdminStuff:(id)sender {

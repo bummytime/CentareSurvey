@@ -9,25 +9,39 @@
 #import "QuestionOneViewController.h"
 #import "Survey.h"
 
-
 @implementation QuestionOneViewController
 
 @synthesize rootViewController;
+@synthesize yesButton;
+@synthesize noButton;
 
 - (int)questionNumber {
 	return 1;
 }
 
 - (IBAction)answeredYes:(id)sender {
-	self.rootViewController.currentSurvey.question1Answer = @"Yes";
+	if (![self.rootViewController.currentSurvey.question1Answer isEqualToString:@"Yes"]) {
+		self.rootViewController.currentSurvey.question1Answer = @"Yes";
+		[yesButton setBackgroundImage:[UIImage imageNamed:@"purple_button_overlay.png"] forState:UIControlStateNormal];
+		[noButton setBackgroundImage:[UIImage imageNamed:@"transparent_button_overlay.png"] forState:UIControlStateNormal];
+	}
 }
 
 - (IBAction)answeredNo:(id)sender {
-	self.rootViewController.currentSurvey.question1Answer = @"No";
+	if (![self.rootViewController.currentSurvey.question1Answer isEqualToString:@"No"]) {
+		self.rootViewController.currentSurvey.question1Answer = @"No";
+		[noButton setBackgroundImage:[UIImage imageNamed:@"purple_button_overlay.png"] forState:UIControlStateNormal];
+		[yesButton setBackgroundImage:[UIImage imageNamed:@"transparent_button_overlay.png"] forState:UIControlStateNormal];
+	}
 }
 
 #pragma mark -
 #pragma mark View management
+
+
+- (void)viewWillAppear:(BOOL)animated {
+	[super viewWillAppear:animated];
+}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -74,6 +88,8 @@
 
 - (void)dealloc {
 	[rootViewController release];
+	[yesButton release];
+	[noButton release];
     [super dealloc];
 }
 
