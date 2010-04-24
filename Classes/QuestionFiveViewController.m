@@ -20,6 +20,7 @@
 
 - (IBAction)answeredQuestion:(id)sender {
 	self.rootViewController.currentSurvey.question5Answer = [NSString stringWithFormat:@"%f", slidy.value];
+	[self.rootViewController nextQuestion:self];
 }
 
 #pragma mark -

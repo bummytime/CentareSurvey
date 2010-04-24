@@ -30,6 +30,7 @@
 		[blackBerryButton setBackgroundImage:[UIImage imageNamed:@"transparent_button_overlay.png"] forState:UIControlStateNormal];
 		[otherButton setBackgroundImage:[UIImage imageNamed:@"transparent_button_overlay.png"] forState:UIControlStateNormal];
 	}
+	[self.rootViewController nextQuestion:self];
 }
 
 - (IBAction)answerediPhone:(id)sender {
@@ -40,6 +41,7 @@
 		[blackBerryButton setBackgroundImage:[UIImage imageNamed:@"transparent_button_overlay.png"] forState:UIControlStateNormal];
 		[otherButton setBackgroundImage:[UIImage imageNamed:@"transparent_button_overlay.png"] forState:UIControlStateNormal];
 	}
+	[self.rootViewController nextQuestion:self];
 }
 
 - (IBAction)answeredBlackBerry:(id)sender {	
@@ -50,6 +52,7 @@
 		[iPhoneButton setBackgroundImage:[UIImage imageNamed:@"transparent_button_overlay.png"] forState:UIControlStateNormal];
 		[otherButton setBackgroundImage:[UIImage imageNamed:@"transparent_button_overlay.png"] forState:UIControlStateNormal];
 	}
+	[self.rootViewController nextQuestion:self];
 }
 
 - (IBAction)answeredOther:(id)sender {
@@ -60,6 +63,7 @@
 		[blackBerryButton setBackgroundImage:[UIImage imageNamed:@"transparent_button_overlay.png"] forState:UIControlStateNormal];
 		[iPhoneButton setBackgroundImage:[UIImage imageNamed:@"transparent_button_overlay.png"] forState:UIControlStateNormal];
 	}
+	[self.rootViewController nextQuestion:self];
 }
 
 
