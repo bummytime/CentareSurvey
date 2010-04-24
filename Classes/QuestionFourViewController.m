@@ -25,6 +25,7 @@
 		[yesButton setBackgroundImage:[UIImage imageNamed:@"purple_button_overlay.png"] forState:UIControlStateNormal];
 		[noButton setBackgroundImage:[UIImage imageNamed:@"transparent_button_overlay.png"] forState:UIControlStateNormal];
 	}
+	[self.rootViewController nextQuestion:self];
 }
 
 - (IBAction)answeredNo:(id)sender {
@@ -33,6 +34,7 @@
 		[noButton setBackgroundImage:[UIImage imageNamed:@"purple_button_overlay.png"] forState:UIControlStateNormal];
 		[yesButton setBackgroundImage:[UIImage imageNamed:@"transparent_button_overlay.png"] forState:UIControlStateNormal];
 	}
+	[self.rootViewController nextQuestion:self];
 }
 
 #pragma mark -
