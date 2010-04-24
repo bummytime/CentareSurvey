@@ -125,6 +125,26 @@
 	item.hidesBackButton = YES;
 	[navigationBar pushNavigationItem:item animated:NO];	
 	[item release];
+	
+	//brute force reset on buttons
+	[questionOneViewController.noButton setBackgroundImage:[UIImage imageNamed:@"transparent_button_overlay.png"] forState:UIControlStateNormal];
+	[questionOneViewController.yesButton setBackgroundImage:[UIImage imageNamed:@"transparent_button_overlay.png"] forState:UIControlStateNormal];
+	
+	[questionTwoViewController.androidButton setBackgroundImage:[UIImage imageNamed:@"transparent_button_overlay.png"] forState:UIControlStateNormal];
+	[questionTwoViewController.iPhoneButton setBackgroundImage:[UIImage imageNamed:@"transparent_button_overlay.png"] forState:UIControlStateNormal];
+	[questionTwoViewController.otherButton setBackgroundImage:[UIImage imageNamed:@"transparent_button_overlay.png"] forState:UIControlStateNormal];
+	[questionTwoViewController.blackBerryButton setBackgroundImage:[UIImage imageNamed:@"transparent_button_overlay.png"] forState:UIControlStateNormal];
+
+	[questionThreeViewController.noButton setBackgroundImage:[UIImage imageNamed:@"transparent_button_overlay.png"] forState:UIControlStateNormal];
+	[questionThreeViewController.yesButton setBackgroundImage:[UIImage imageNamed:@"transparent_button_overlay.png"] forState:UIControlStateNormal];
+
+	[questionFourViewController.noButton setBackgroundImage:[UIImage imageNamed:@"transparent_button_overlay.png"] forState:UIControlStateNormal];
+	[questionFourViewController.yesButton setBackgroundImage:[UIImage imageNamed:@"transparent_button_overlay.png"] forState:UIControlStateNormal];
+
+	[questionFiveViewController.slidy setValue:5.0f];
+	
+	questionSixViewController.generalCommentBlock.text = @"" ;
+	
 }
 
 - (void) createOnlyNextButton {
