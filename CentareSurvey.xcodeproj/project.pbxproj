@@ -39,6 +39,7 @@
 		C96DFF141177DD0C00DF882E /* WelcomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C96DFF131177DD0C00DF882E /* WelcomeViewController.m */; };
 		C96DFF161177DE3100DF882E /* Welcome.xib in Resources */ = {isa = PBXBuildFile; fileRef = C96DFF151177DE3100DF882E /* Welcome.xib */; };
 		C9B5BC3F117A4BAE007F159C /* Centare_Icon_90x90.png in Resources */ = {isa = PBXBuildFile; fileRef = C9B5BC3E117A4BAE007F159C /* Centare_Icon_90x90.png */; };
+		C9DEEBA01183E21D00A8B0A9 /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C9DEEB9A1183E21D00A8B0A9 /* MessageUI.framework */; };
 		C9EFADFB1174063C00014AF8 /* OrangeRectHighlight.png in Resources */ = {isa = PBXBuildFile; fileRef = C9EFADFA1174063C00014AF8 /* OrangeRectHighlight.png */; };
 		C9F402B3117248A200B8EDEF /* BlueRect.png in Resources */ = {isa = PBXBuildFile; fileRef = C9F402AF117248A200B8EDEF /* BlueRect.png */; };
 		C9F402B4117248A200B8EDEF /* BlueRectHighlight.png in Resources */ = {isa = PBXBuildFile; fileRef = C9F402B0117248A200B8EDEF /* BlueRectHighlight.png */; };
@@ -95,6 +96,7 @@
 		C96DFF131177DD0C00DF882E /* WelcomeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WelcomeViewController.m; sourceTree = "<group>"; };
 		C96DFF151177DE3100DF882E /* Welcome.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = Welcome.xib; sourceTree = "<group>"; };
 		C9B5BC3E117A4BAE007F159C /* Centare_Icon_90x90.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Centare_Icon_90x90.png; path = Images/Centare_Icon_90x90.png; sourceTree = "<group>"; };
+		C9DEEB9A1183E21D00A8B0A9 /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
 		C9EFADFA1174063C00014AF8 /* OrangeRectHighlight.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = OrangeRectHighlight.png; path = Images/OrangeRectHighlight.png; sourceTree = "<group>"; };
 		C9F402AF117248A200B8EDEF /* BlueRect.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = BlueRect.png; path = Images/BlueRect.png; sourceTree = "<group>"; };
 		C9F402B0117248A200B8EDEF /* BlueRectHighlight.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = BlueRectHighlight.png; path = Images/BlueRectHighlight.png; sourceTree = "<group>"; };
@@ -111,6 +113,7 @@
 				1DF5F4E00D08C38300B7A737 /* UIKit.framework in Frameworks */,
 				288765FD0DF74451002DB57D /* CoreGraphics.framework in Frameworks */,
 				C9697D59117E31CE0079527E /* libsqlite3.dylib in Frameworks */,
+				C9DEEBA01183E21D00A8B0A9 /* MessageUI.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -196,6 +199,7 @@
 				1D30AB110D05D00D00671497 /* Foundation.framework */,
 				288765FC0DF74451002DB57D /* CoreGraphics.framework */,
 				C9697D58117E31CE0079527E /* libsqlite3.dylib */,
+				C9DEEB9A1183E21D00A8B0A9 /* MessageUI.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";

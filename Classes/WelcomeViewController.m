@@ -50,18 +50,67 @@
 }
 
 #pragma mark -
-#pragma mark Actions
+#pragma mark Actions and Delegates
+
+- (BOOL)textFieldShouldReturn:(UITextField *)theTextField {
+	[theTextField resignFirstResponder];
+	if(theTextField == surveyParticipantEmail)
+		[self startSurvey:nil];
+	else
+		[surveyParticipantEmail becomeFirstResponder];
+
+	return YES;
+}
+
+- (void)mailComposeController:(MFMailComposeViewController*)controller  
+          didFinishWithResult:(MFMailComposeResult)result 
+                        error:(NSError*)error;
+{
+	if (result == MFMailComposeResultSent) {
+		NSLog(@"Email Sent.");
+	}
+	[self dismissModalViewControllerAnimated:YES];
+}
 
 - (IBAction)startSurvey:(id)sender {
-	[self.rootViewController beginSurvey];
-	self.rootViewController.currentSurvey.surveyTakerName = surveyParticipantName.text;
-	self.rootViewController.currentSurvey.surveyTakerEmail = surveyParticipantEmail.text;	
+	if ([surveyParticipantName.text length] > 0 &&
+			[surveyParticipantEmail.text length] > 0) {
+		[self.rootViewController beginSurvey];
+		self.rootViewController.currentSurvey.surveyTakerName = surveyParticipantName.text;
+		self.rootViewController.currentSurvey.surveyTakerEmail = surveyParticipantEmail.text;	
+	} else {
+		UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Whoops" message:@"Please enter both a name and email address to begin the survey." delegate:nil cancelButtonTitle:@"Ok" otherButtonTitles:nil];
+		[alert show];
+		[alert release];
+	}
 }
 
 - (IBAction)launchAdminStuff:(id)sender {
-	UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Admin Button Pressed" message:@"You pressed the admin icon!" delegate:nil cancelButtonTitle:@"Yep, I did." otherButtonTitles:nil];
+	UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Administration" message:@"Please enter your password." delegate:self cancelButtonTitle:@"Cancel" otherButtonTitles:@"Submit", nil];
+	//Not public API...so sue me.
+	[alert addTextFieldWithValue:@"" label:@"Password"];
+	textfieldAdminPassword = [alert textFieldAtIndex:0];
+	textfieldAdminPassword.secureTextEntry = YES;
 	[alert show];
 	[alert release];
+}
+
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {
+	if (buttonIndex == 1 &&
+		[textfieldAdminPassword.text isEqualToString:kAdminPassword] &&
+		[MFMailComposeViewController canSendMail]) {
+		
+		//Let's just send an email with the SQLite DB attached
+		NSData *attachedDb = [NSData dataWithContentsOfFile:[rootViewController dataFilePath]];
+		
+		MFMailComposeViewController *controller = [[MFMailComposeViewController alloc] init];
+		controller.mailComposeDelegate = self;
+		[controller setSubject:@"Centare Survey iPad app results DB"];
+		[controller setMessageBody:@"SQLite database is attached." isHTML:NO]; 
+		[controller addAttachmentData:attachedDb mimeType:@"application/octet-stream" fileName:@"surveyresults.db"];
+		[self presentModalViewController:controller animated:YES];
+		[controller release];
+	}
 }
 
 #pragma mark -
@@ -75,6 +124,7 @@
 }
 
 - (void)dealloc {
+	[textfieldAdminPassword release];
 	[surveyParticipantName release];
 	[surveyParticipantEmail release];
 	[rootViewController release];
