@@ -6,13 +6,18 @@
 //  Copyright 2010 Nerddogs, Inc. All rights reserved.
 //
 
+#import <MessageUI/MFMailComposeViewController.h>
 #import <UIKit/UIKit.h>
 #import "RootViewController.h"
 
-@interface WelcomeViewController : UIViewController <AutoAdjustingOrientation>{
+#define kAdminPassword    @"edvskevin"
+
+@interface WelcomeViewController : UIViewController <AutoAdjustingOrientation, 
+									UITextFieldDelegate, UIAlertViewDelegate, MFMailComposeViewControllerDelegate>{
 	UITextField *surveyParticipantName;
 	UITextField	*surveyParticipantEmail;
 	RootViewController *rootViewController;
+	UITextField *textfieldAdminPassword;
 }
 
 - (IBAction)startSurvey:(id)sender;

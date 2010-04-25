@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+
 @class RootViewController;
 
 @interface CentareSurveyAppDelegate : NSObject <UIApplicationDelegate> {
